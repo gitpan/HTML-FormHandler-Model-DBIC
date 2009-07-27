@@ -26,7 +26,6 @@ t/bad_item_id.t
 t/book.t
 t/book_auto.t
 t/datetime.t
-t/db/book.db
 t/db/bookdb.sql
 t/db_fif.t
 t/db_has_many.t
