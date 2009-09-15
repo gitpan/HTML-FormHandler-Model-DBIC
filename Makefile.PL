@@ -18,12 +18,12 @@ license 'perl';
 repository 'http://github.com/gshank/html-formhandler-model-dbic/tree/master';
 
 # prereqs
-requires 'HTML::FormHandler' => '0.27';
+requires 'HTML::FormHandler' => '0.28';
 requires 'DBIx::Class';
-requires 'DBIx::Class::ResultSet::RecursiveUpdate' => '0.010';
+requires 'DBIx::Class::ResultSet::RecursiveUpdate' => '0.012';
 
 # things the tests need
-test_requires 'Test::More'      => '0.77';
+test_requires 'Test::More'      => '0.88';
 test_requires 'DateTime::Format::MySQL';
 test_requires 'DateTime::Format::W3CDTF' => 0;
 test_requires 'DateTime::Format::SQLite';

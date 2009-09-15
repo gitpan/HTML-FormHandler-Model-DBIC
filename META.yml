@@ -7,7 +7,7 @@ build_requires:
   DateTime::Format::SQLite: 0
   DateTime::Format::W3CDTF: 0
   ExtUtils::MakeMaker: 6.42
-  Test::More: 0.77
+  Test::More: 0.88
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
@@ -23,9 +23,9 @@ no_index:
     - t
 requires:
   DBIx::Class: 0
-  DBIx::Class::ResultSet::RecursiveUpdate: 0.010
-  HTML::FormHandler: 0.27
+  DBIx::Class::ResultSet::RecursiveUpdate: 0.012
+  HTML::FormHandler: 0.28
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/gshank/html-formhandler-model-dbic/tree/master
-version: 0.04002
+version: 0.05

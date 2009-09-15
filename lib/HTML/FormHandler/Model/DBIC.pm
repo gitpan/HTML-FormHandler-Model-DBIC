@@ -7,7 +7,7 @@ use DBIx::Class::ResultClass::HashRefInflator;
 use DBIx::Class::ResultSet::RecursiveUpdate;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.04002';
+our $VERSION = '0.05';
 
 =head1 NAME
 
@@ -359,7 +359,7 @@ sub validate_unique
    my $rs          = $self->resultset;
    my $found_error = 0;
 
-   for my $field ( $self->fields )
+   for my $field ( @{$self->fields} )
    {
       next unless $field->unique;
       next if $field->has_errors;
@@ -498,5 +498,5 @@ the same terms as Perl itself.
 =cut
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
+use namespace::autoclean;
 1;

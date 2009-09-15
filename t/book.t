@@ -3,12 +3,6 @@ use warnings;
 use Test::More;
 use lib 't/lib';
 
-BEGIN {
-   eval "use DBIx::Class";
-   plan skip_all => 'DBIX::Class required' if $@;
-   plan tests => 28;
-}
-
 use_ok( 'HTML::FormHandler' );
 
 use_ok( 'BookDB::Form::Book');
@@ -41,7 +35,6 @@ ok ($book, 'get book object from form');
 
 is_deeply( $form->values, $good, 'values correct' );
 $good->{$_} = '' for qw/ year comment pages/;
-$good->{submit} = 'Update';
 is_deeply( $form->fif, $good, 'fif correct' );
 
 my $num_genres = $book->genres->count;
@@ -73,8 +66,6 @@ my $value_hash = { %{$good},
                  };
 delete $value_hash->{submit};
 is_deeply( $form->values, $value_hash, 'get right values from form');
-
-$_->clear_input for $form->fields;
 
 my $bad_1 = {
     notitle => 'not req',
@@ -113,3 +104,4 @@ ok( $validated, 'now form validates' );
 $form->process;
 is( $book->publisher, 'EreWhon Publishing', 'publisher has not changed');
 
+done_testing;
