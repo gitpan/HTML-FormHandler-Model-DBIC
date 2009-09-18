@@ -20,7 +20,6 @@ META.yml
 README
 script/form_generator.pl
 t/01app.t
-t/02pod.t
 t/auto_fields.t
 t/bad_item_id.t
 t/book.t
@@ -34,7 +33,6 @@ t/db_init_obj.t
 t/db_options.t
 t/db_validate.t
 t/dbic_accessor.t
-t/dump.t
 t/fif.t
 t/generator.t
 t/lib/BookDB.pm
@@ -107,4 +105,6 @@ t/reload_options.t
 t/script/bookdb_server.pl
 t/script/bookdb_test.pl
 t/unique.t
+t/xt/02pod.t
+t/xt/dump.t
 TODO
