@@ -104,6 +104,7 @@ t/related.t
 t/reload_options.t
 t/script/bookdb_server.pl
 t/script/bookdb_test.pl
+t/unique-composite.t
 t/unique.t
 t/xt/02pod.t
 t/xt/dump.t

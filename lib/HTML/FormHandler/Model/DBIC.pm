@@ -7,7 +7,7 @@ use DBIx::Class::ResultClass::HashRefInflator;
 use DBIx::Class::ResultSet::RecursiveUpdate;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 NAME
 
@@ -155,6 +155,20 @@ in the form class - that method is called instead.
 =head2 validate_unique
 
 For fields that are marked "unique", checks the database for uniqueness.
+The unique constraints registered in the DBIC result source (see
+L<DBIx::Class::ResultSource/add_unique_constraint>) will also be inspected
+for uniqueness.  Alternatively, you can use the C<unique_constraints>
+attribute to limit uniqueness checking to only a select group of unique
+constraints.  Error messages can be specified in the C<unique_messages>
+attribute.  Here's an example where you might want to specify a unique
+widget name for a given department:
+
+   has '+unique_constraints' => ( default => sub { ['department_widget_name'] } );   
+   has '+unique_messages' => (
+      default => sub {
+         { department_widget_name => "Please choose a unique widget name for this department" };
+      }
+   );
 
 =head2 source
 
@@ -175,6 +189,22 @@ has 'source_name' => (
    is      => 'rw',
    lazy    => 1,
    builder => 'build_source_name'
+);
+
+has unique_constraints => (
+   is         => 'ro',
+   isa        => 'ArrayRef',
+   lazy_build => 1,
+);
+sub _build_unique_constraints {
+   my $self = shift;
+   return [grep { $_ ne 'primary' } $self->resultset->result_source->unique_constraint_names];
+}
+
+has unique_messages => (
+   is      => 'ro',
+   isa     => 'HashRef',
+   default => sub { +{} },
 );
 
 sub validate_model
@@ -358,8 +388,45 @@ sub validate_unique
 
    my $rs          = $self->resultset;
    my $found_error = 0;
+   my $fields      = $self->fields;
 
-   for my $field ( @{$self->fields} )
+   my @id_clause = ();
+   @id_clause = _id_clause( $rs, $self->item_id ) if defined $self->item;
+   
+   my $value = $self->value;
+   # validate unique constraints in the model
+   for my $constraint (@{ $self->unique_constraints })
+   {
+      my @columns = $rs->result_source->unique_constraint_columns($constraint);
+      my @values = map {
+         exists( $value->{$_} ) ? $value->{$_} : undef
+            ||
+         ( $self->item ? $self->item->get_column($_) : undef )
+      } @columns;
+
+      next if @columns != @values; # don't check unique constraints for which we don't have all the values
+      next if grep { !defined $_ } @values; # don't check unique constraints with NULL values
+
+      my %where;
+      @where{@columns} = @values;
+      my $count = $rs->search( \%where )->search({@id_clause})->count;
+      next if $count < 1;
+
+      # now find the field we can attach the error to
+      my $field;
+      for my $col (@columns)
+      {
+         ($field) = grep { $_->accessor eq $col } @$fields;
+         last if $field;
+      }
+      next unless defined $field;
+
+      my $field_error = $self->unique_message_for_constraint($constraint);
+      $field->add_error( $field_error );
+      $found_error++;
+   }
+
+   for my $field ( @$fields )
    {
       next unless $field->unique;
       next if $field->has_errors;
@@ -367,8 +434,6 @@ sub validate_unique
       next unless defined $value;
       my $accessor   = $field->accessor;
 
-      my @id_clause = ();
-      @id_clause = _id_clause( $rs, $self->item_id ) if defined $self->item;
       my $count = $rs->search( { $accessor => $value, @id_clause } )->count;
       next if $count < 1;
       my $field_error = $field->unique_message || 'Duplicate value for ' . $field->label;
@@ -377,6 +442,13 @@ sub validate_unique
    }
 
    return $found_error;
+}
+
+sub unique_message_for_constraint {
+   my $self       = shift;
+   my $constraint = shift;
+
+   return $self->unique_messages->{$constraint} ||= "Duplicate value for $constraint unique constraint";
 }
 
 sub _id_clause {
