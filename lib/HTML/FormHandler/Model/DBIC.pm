@@ -5,9 +5,9 @@ extends 'HTML::FormHandler';
 use Carp;
 use DBIx::Class::ResultClass::HashRefInflator;
 use DBIx::Class::ResultSet::RecursiveUpdate;
-use Scalar::Util qw(blessed);
+use Scalar::Util ('blessed');
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 =head1 NAME
 
@@ -157,7 +157,8 @@ in the form class - that method is called instead.
 For fields that are marked "unique", checks the database for uniqueness.
 The unique constraints registered in the DBIC result source (see
 L<DBIx::Class::ResultSource/add_unique_constraint>) will also be inspected
-for uniqueness.  Alternatively, you can use the C<unique_constraints>
+for uniqueness unless the field's 'unique' attribute is set to false.
+Alternatively, you can use the C<unique_constraints>
 attribute to limit uniqueness checking to only a select group of unique
 constraints.  Error messages can be specified in the C<unique_messages>
 attribute.  Here's an example where you might want to specify a unique
@@ -234,10 +235,15 @@ sub update_model
         updates => $self->values,
     );
     $update_params{ object } = $self->item if $self->item;
-    my $new_item = DBIx::Class::ResultSet::RecursiveUpdate::Functions::recursive_update( %update_params );
-    $new_item->discard_changes;
-    $self->item($new_item);
-    return $new_item;
+    my $new_item;
+    # perform update in a transaction, since RecursiveUpdate may do multiple
+    # updates if there are compound or multiple fields
+    $self->schema->txn_do( sub {
+        $new_item = DBIx::Class::ResultSet::RecursiveUpdate::Functions::recursive_update( %update_params );
+        $new_item->discard_changes;
+    });
+    $self->item($new_item) if $new_item;
+    return $self->item;
 }
 
 # undocumented because this is going to be replaced
@@ -420,6 +426,9 @@ sub validate_unique
          last if $field;
       }
       next unless defined $field;
+      # the check for fields that do *not* want a unique check should be done
+      # earlier, but this is the simplest place
+      next if ( $field->has_unique && $field->unique == 0 );
 
       my $field_error = $self->unique_message_for_constraint($constraint);
       $field->add_error( $field_error );
@@ -528,14 +537,6 @@ sub resultset
    my ( $self, $f_class ) = @_;
    die "You must supply a schema for your FormHandler form" unless $self->schema;
    return $self->schema->resultset( $self->source_name || $self->item_class );
-}
-
-sub new_lookup_options
-{
-   my ( $self, $field, $accessor_path ) = @_;
-
-   my $source = $self->get_source( $accessor_path );
-   $self->lookup_options( $field, $source );
 }
 
 sub get_source
