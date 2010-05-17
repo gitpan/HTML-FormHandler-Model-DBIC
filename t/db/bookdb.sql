@@ -79,9 +79,15 @@ CREATE TABLE book (
     borrower int REFERENCES borrower,
     borrowed varchar(100),
     owner int REFERENCES user,
-    extra varchar(100),
-	CONSTRAINT author_title UNIQUE (author, title)
+    extra varchar(100)
 );
+
+CREATE INDEX book_idx_borrower ON book (borrower);
+CREATE INDEX book_idx_format ON book (format);
+CREATE INDEX book_idx_owner ON book (owner);
+CREATE UNIQUE INDEX author_title ON book (author, title);
+CREATE UNIQUE INDEX isbn ON book (isbn);
+
 INSERT INTO "book" VALUES(1, '0-7475-5100-6', 'Harry Potter and the Order of the Phoenix', 'J.K. Rowling', 'Boomsbury', 766, 2001, 1, 5, 1, '', 2, '');
 INSERT INTO "book" VALUES(2, '9 788256006199', 'Idioten', 'Fjodor Mikhajlovitsj Dostojevskij', 'Interbook', 303, 1901, 2, 3, 2, '2004-00-10', 2, '');
 INSERT INTO "book" VALUES(3, '434012386', 'The Confusion', 'Neal Stephenson', 'Heinemann', 345, 2002, 2, NULL, 2, '2009-01-16', 1, '');
@@ -186,4 +192,43 @@ INSERT INTO country VALUES ('RU','RUSSIAN FEDERATION','Russian Federation','RUS'
 INSERT INTO country VALUES ('GB','UNITED KINGDOM','United Kingdom','GBR','826');
 INSERT INTO country VALUES ('US','UNITED STATES','United States','USA','840');
 INSERT INTO country VALUES ('ZW','ZIMBABWE','Zimbabwe','ZWE','716');
+
+
+--
+-- Table: pages
+--
+
+CREATE TABLE pages (
+  id INTEGER PRIMARY KEY NOT NULL,
+  display_value VARCHAR2(30) NOT NULL,
+  description VARCHAR2(200),
+  modified_date TIMESTAMP(11),
+  created_date TIMESTAMP(11) NOT NULL DEFAULT 'systimestamp'
+);
+
+--
+-- Table: roles_pages
+--
+
+CREATE TABLE roles_pages (
+  role_fk NUMBER(38) NOT NULL,
+  page_fk NUMBER(38) NOT NULL,
+  edit_flag NUMBER(38) NOT NULL DEFAULT '0 ',
+  created_date TIMESTAMP(11) NOT NULL DEFAULT 'systimestamp',
+  PRIMARY KEY (role_fk, page_fk)
+);
+
+CREATE INDEX roles_pages_idx_page_fk ON roles_pages (page_fk);
+
+CREATE TABLE roles (
+  id INTEGER PRIMARY KEY NOT NULL,
+  display_value VARCHAR2(30) NOT NULL,
+  description VARCHAR2(200),
+  active smallint(38) NOT NULL DEFAULT '1 ',
+  modified_date TIMESTAMP(11),
+  created_date DATETIME(11) NOT NULL DEFAULT 'systimestamp'
+);
+
+CREATE UNIQUE INDEX unique_role ON roles (display_value);
+
 COMMIT;
