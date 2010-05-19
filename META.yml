@@ -24,10 +24,10 @@ no_index:
 requires:
   DBIx::Class: 0
   DBIx::Class::ResultSet::RecursiveUpdate: 0.012
-  HTML::FormHandler: 0.30003
+  HTML::FormHandler: 0.31003
   Moose: 0.90
   namespace::autoclean: 0.09
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/gshank/html-formhandler-model-dbic/tree/master
-version: 0.10
+version: 0.11
