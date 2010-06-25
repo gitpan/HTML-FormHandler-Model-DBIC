@@ -101,6 +101,7 @@ t/process.t
 t/reflect.t
 t/related.t
 t/reload_options.t
+t/resultset.t
 t/script/bookdb_schema.pl
 t/script/bookdb_server.pl
 t/script/bookdb_test.pl
