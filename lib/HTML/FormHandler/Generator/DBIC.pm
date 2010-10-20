@@ -1,37 +1,11 @@
 package HTML::FormHandler::Generator::DBIC;
-use Moose;
+# ABSTRACT: form generator for DBIC
 
+use Moose;
 use DBIx::Class;
 use Template;
 our $VERSION = '0.03';
 
-=head1 NAME
-
-HTML::FormHandler::Generator::DBIC - generate form classes from DBIC schema
-
-=head1 SYNOPSIS
-
-   form_generator.pl --rs_name=Book --schema_name=BookDB::Schema::DB 
-            --db_dsn=dbi:SQLite:t/db/book.db > BookForm.pm
-
-=head1 DESCRIPTION
-
-Options:
-
-  rs_name       -- Resultset Name
-  schema_name   -- Schema Name
-  db_dsn        -- dsn connect info
-
-
-This package should be considered still experimental since the output,
-of the generated classes will be changed from time to time.  This should
-not impact the main usage for this module that we had in mind, that is
-generating the initial version of a FormHandler form class, copying
-it to the project and modifying it.
-
-This script is installed into the system with the rest of FormHandler.
-
-=cut
 
 has db_dsn => (
     is => 'ro',
@@ -349,19 +323,52 @@ sub get_self_cols{
     has '+m2m' => ( metaclass => 'NoGetopt' );
 }
 
-
-
-=head1 AUTHOR
-
-Zbigniew Lukasiak
-
-=head1 COPYRIGHT
-
-This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-=cut
-
 __PACKAGE__->meta->make_immutable;
 use namespace::autoclean;
 1;
+
+__END__
+=pod
+
+=head1 NAME
+
+HTML::FormHandler::Generator::DBIC - form generator for DBIC
+
+=head1 VERSION
+
+version 0.13
+
+=head1 SYNOPSIS
+
+   form_generator.pl --rs_name=Book --schema_name=BookDB::Schema::DB
+            --db_dsn=dbi:SQLite:t/db/book.db > BookForm.pm
+
+=head1 DESCRIPTION
+
+Options:
+
+  rs_name       -- Resultset Name
+  schema_name   -- Schema Name
+  db_dsn        -- dsn connect info
+
+This package should be considered still experimental since the output,
+of the generated classes will be changed from time to time.  This should
+not impact the main usage for this module that we had in mind, that is
+generating the initial version of a FormHandler form class, copying
+it to the project and modifying it.
+
+This script is installed into the system with the rest of FormHandler.
+
+=head1 AUTHOR
+
+FormHandler Contributors - see HTML::FormHandler
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Gerda Shank.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+

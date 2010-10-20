@@ -1,17 +1,9 @@
 package HTML::FormHandler::Model::DBIC::TypeMap;
+# ABSTRACT: type mape for DBICFields
 
 use Moose;
 use namespace::autoclean;
 
-=head1 NAME
-
-HTML::FormHandler::Model::DBIC::TypeMap
-
-=head1 SYNOPSIS
-
-Use by L<HTML::FormHandler::TraitFor::DBICFields>. 
-
-=cut
 
 has 'data_type_map' => ( is => 'ro', isa => 'HashRef',
    lazy => 1, builder => 'build_data_type_map',
@@ -44,7 +36,7 @@ sub type_for_column {
     my %field_def;
     my $type;
     if( my $def = $info->{extra}->{field_def} ) {
-        return $def; 
+        return $def;
     }
     if( $info->{data_type} ) {
         $type = $self->get_field_type( lc($info->{data_type}) );
@@ -54,9 +46,9 @@ sub type_for_column {
     $field_def{size} = $info->{size}
            if( $type eq 'Textarea' && $info->{size} );
     $field_def{required} = 1 if not $info->{is_nullable};
-    return \%field_def; 
+    return \%field_def;
 }
-     
+
 # stub
 sub type_for_rel {
     my ( $self, $rel ) = @_;
@@ -64,3 +56,32 @@ sub type_for_rel {
 }
 
 1;
+
+__END__
+=pod
+
+=head1 NAME
+
+HTML::FormHandler::Model::DBIC::TypeMap - type mape for DBICFields
+
+=head1 VERSION
+
+version 0.13
+
+=head1 SYNOPSIS
+
+Use by L<HTML::FormHandler::TraitFor::DBICFields>.
+
+=head1 AUTHOR
+
+FormHandler Contributors - see HTML::FormHandler
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Gerda Shank.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+

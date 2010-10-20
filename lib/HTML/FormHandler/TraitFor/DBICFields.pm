@@ -1,60 +1,43 @@
 package HTML::FormHandler::TraitFor::DBICFields;
+# ABSTRACT: role to get fields from DBIx::Class result source
 
 use Moose::Role;
 requires ('source', 'schema');
 use HTML::FormHandler::Model::DBIC::TypeMap;
 
-=head1 NAME
-
-HTML::FormHandler::TraitFor::DBICFields
-
-=head1 SYNOPSIS
-
-This is a role to pull fields from a DBIx::Class result source. Requires
-existence of a 'source' attribute.
-
-This feature is new. It doesn't handle relationships yet, and the 
-interfaces are still subject to change.
-
-  my $form = HTML::FormHandler::Model::DBIC->new_with_traits(
-      traits => ['HTML::FormHandler::TraitFor::DBICFields'],
-      item => $book
-  );
-
-=cut
 
 has 'fields_from_model' => ( is => 'ro', default => 1 );
 
-has 'include' => ( is => 'ro', 
+has 'include' => ( is => 'ro',
     traits => ['Array'],
-    isa => 'ArrayRef[Str]', 
-    default => sub {[]}, 
+    isa => 'ArrayRef[Str]',
+    default => sub {[]},
     handles => {
        all_includes => 'elements',
        has_includes => 'count',
     }
 );
-has 'exclude' => ( is => 'ro', 
+has 'exclude' => ( is => 'ro',
     traits => ['Array'],
-    isa => 'ArrayRef[Str]', 
+    isa => 'ArrayRef[Str]',
     default => sub {[]},
     handles => {
        has_excludes => 'count',
     }
 );
-has 'rels' => ( is => 'ro', 
+has 'rels' => ( is => 'ro',
     traits => ['Array'],
-    isa => 'ArrayRef[Str]', 
+    isa => 'ArrayRef[Str]',
     default => sub {[]},
     handles => {
        has_rels => 'count',
     }
 );
-has 'type_map_class' => ( is => 'ro', isa => 'Str', 
+has 'type_map_class' => ( is => 'ro', isa => 'Str',
      default => 'HTML::FormHandler::Model::DBIC::TypeMap' );
 has 'type_map_args' => ( is => 'ro', isa => 'HashRef', default => sub {{}} );
 has 'type_map' => ( is => 'ro', lazy => 1, builder => 'build_type_map',
-    handles => ['type_for_column', 'type_for_rel'], 
+    handles => ['type_for_column', 'type_for_rel'],
 );
 sub build_type_map {
     my $self = shift;
@@ -105,7 +88,34 @@ sub is_SQLite_auto_pk {
 # not yet implemented
 sub field_for_rel {
     my ( $self, $name, $info ) = @_;
+
+}
+
+1;
+
+__END__
 =pod
+
+=head1 NAME
+
+HTML::FormHandler::TraitFor::DBICFields - role to get fields from DBIx::Class result source
+
+=head1 VERSION
+
+version 0.13
+
+=head1 SYNOPSIS
+
+This is a role to pull fields from a DBIx::Class result source. Requires
+existence of a 'source' attribute.
+
+This feature is new. It doesn't handle relationships yet, and the
+interfaces are still subject to change.
+
+  my $form = HTML::FormHandler::Model::DBIC->new_with_traits(
+      traits => ['HTML::FormHandler::TraitFor::DBICFields'],
+      item => $book
+  );
 
     for my $rel( $source->relationships ) {
         next if grep { $_ eq $rel } @exclude;
@@ -134,8 +144,16 @@ sub field_for_rel {
         }
     }
 
+=head1 AUTHOR
+
+FormHandler Contributors - see HTML::FormHandler
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Gerda Shank.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
 
-}
-
-1;

@@ -1,33 +1,28 @@
 ---
-abstract: 'Model class for FormHandler using DBIx::Class'
+abstract: 'base class that holds DBIC model role'
 author:
-  - 'Gerda Shank'
+  - 'FormHandler Contributors - see HTML::FormHandler'
 build_requires:
   DateTime::Format::MySQL: 0
   DateTime::Format::SQLite: 0
   DateTime::Format::W3CDTF: 0
-  ExtUtils::MakeMaker: 6.42
-  Test::More: 0.88
+  Test::More: 0.94
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
+  ExtUtils::MakeMaker: 6.31
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.101670'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: HTML-FormHandler-Model-DBIC
-no_index:
-  directory:
-    - inc
-    - t
 requires:
   DBIx::Class: 0
-  DBIx::Class::ResultSet::RecursiveUpdate: 0.012
-  HTML::FormHandler: 0.32000
+  DBIx::Class::ResultSet::RecursiveUpdate: 0.20
+  HTML::FormHandler: 0.32004
   Moose: 0.90
   namespace::autoclean: 0.09
 resources:
-  license: http://dev.perl.org/licenses/
-  repository: http://github.com/gshank/html-formhandler-model-dbic/tree/master
-version: 0.12
+  bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-FormHandler-Model-DBIC
+  repository: git://github.com/gshank/html-formhandler-model-dbic.git
+version: 0.13

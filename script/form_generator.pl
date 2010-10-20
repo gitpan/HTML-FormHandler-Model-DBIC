@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+package form_generator.pl;
+# ABSTRACT: form generator
 use strict;
 use warnings;
 
@@ -8,4 +10,29 @@ use lib ('lib');
 my $generator = HTML::FormHandler::Generator::DBIC::Cmd->new_with_options();
 
 print $generator->generate_form;
+
+
+__END__
+=pod
+
+=head1 NAME
+
+form_generator - form generator
+
+=head1 VERSION
+
+version 0.13
+
+=head1 AUTHOR
+
+FormHandler Contributors - see HTML::FormHandler
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Gerda Shank.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

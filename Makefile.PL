@@ -1,40 +1,62 @@
+
 use strict;
 use warnings;
-use inc::Module::Install 0.89;
 
-BEGIN {
-    if ($Module::Install::AUTHOR) { # Not strictly needed, but reminds idiots like
-                                    # me what M::I extensions I need ;)
-        require Module::Install::AuthorRequires;
-        require Module::Install::AuthorTests;
+
+
+use ExtUtils::MakeMaker 6.31;
+
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'base class that holds DBIC model role',
+  'AUTHOR' => 'FormHandler Contributors - see HTML::FormHandler',
+  'BUILD_REQUIRES' => {
+    'DateTime::Format::MySQL' => '0',
+    'DateTime::Format::SQLite' => '0',
+    'DateTime::Format::W3CDTF' => '0',
+    'Test::More' => '0.94'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'HTML-FormHandler-Model-DBIC',
+  'EXE_FILES' => [
+    'script/form_generator.pl'
+  ],
+  'LICENSE' => 'perl',
+  'NAME' => 'HTML::FormHandler::Model::DBIC',
+  'PREREQ_PM' => {
+    'DBIx::Class' => '0',
+    'DBIx::Class::ResultSet::RecursiveUpdate' => '0.20',
+    'HTML::FormHandler' => '0.32004',
+    'Moose' => '0.90',
+    'namespace::autoclean' => '0.09'
+  },
+  'VERSION' => '0.13',
+  'test' => {
+    'TESTS' => 't/*.t t/xt/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
     }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
 }
 
-name 'HTML-FormHandler-Model-DBIC';
-author 'Gerda Shank';
-all_from 'lib/HTML/FormHandler/Model/DBIC.pm';
-license 'perl';
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
-repository 'http://github.com/gshank/html-formhandler-model-dbic/tree/master';
+WriteMakefile(%WriteMakefileArgs);
 
-# prereqs
-requires 'HTML::FormHandler' => '0.32000';
-requires 'Moose' => '0.90';
-requires 'DBIx::Class';
-requires 'DBIx::Class::ResultSet::RecursiveUpdate' => '0.012';
-requires 'namespace::autoclean' => '0.09';
 
-# things the tests need
-test_requires 'Test::More'      => '0.88';
-test_requires 'DateTime::Format::MySQL';
-test_requires 'DateTime::Format::W3CDTF' => 0;
-test_requires 'DateTime::Format::SQLite';
-
-tests();
-author_tests('t/xt');
-
-install_script 'form_generator.pl';
-auto_install();
-
-WriteAll();
 

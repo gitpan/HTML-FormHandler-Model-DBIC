@@ -1,0 +1,53 @@
+{
+   "abstract" : "base class that holds DBIC model role",
+   "author" : [
+      "FormHandler Contributors - see HTML::FormHandler"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.101670",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "HTML-FormHandler-Model-DBIC",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.31"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "DBIx::Class" : 0,
+            "DBIx::Class::ResultSet::RecursiveUpdate" : "0.20",
+            "HTML::FormHandler" : "0.32004",
+            "Moose" : "0.90",
+            "namespace::autoclean" : "0.09"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "DateTime::Format::MySQL" : 0,
+            "DateTime::Format::SQLite" : 0,
+            "DateTime::Format::W3CDTF" : 0,
+            "Test::More" : "0.94"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-HTML-FormHandler-Model-DBIC@rt.cpan.org",
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-FormHandler-Model-DBIC"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/gshank/html-formhandler-model-dbic.git",
+         "web" : "http://github.com/gshank/html-formhandler-model-dbic"
+      }
+   },
+   "version" : "0.13"
+}
