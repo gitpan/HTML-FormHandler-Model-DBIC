@@ -1,3 +1,4 @@
+BookDB-Schema-1-SQLite.sql
 Changes
 INSTALL
 LICENSE
@@ -18,9 +19,15 @@ script/form_generator.pl
 t/01app.t
 t/bad_item_id.t
 t/book.t
+t/bug.t
 t/datetime.t
 t/db/book.db
 t/db/bookdb.sql
+t/db/bookdb.sql.orig
+t/db/bookdb.sql.rej
+t/db/pages.sql
+t/db/roles.sql
+t/db/roles_pages.sql
 t/db_fif.t
 t/db_has_many.t
 t/db_init_obj.t
@@ -63,6 +70,9 @@ t/lib/BookDB/Schema/Result/Employer.pm
 t/lib/BookDB/Schema/Result/Format.pm
 t/lib/BookDB/Schema/Result/Genre.pm
 t/lib/BookDB/Schema/Result/License.pm
+t/lib/BookDB/Schema/Result/Page.pm
+t/lib/BookDB/Schema/Result/Role.pm
+t/lib/BookDB/Schema/Result/RolesPage.pm
 t/lib/BookDB/Schema/Result/User.pm
 t/lib/BookDB/Schema/Result/UserEmployer.pm
 t/lib/BookDB/View/TT.pm
@@ -91,13 +101,16 @@ t/lib/BookDB/root/widget/text.tt
 t/lib/BookDB/root/widget/textarea.tt
 t/model_dbic.t
 t/mult_pk.t
+t/no-tabs.t
 t/process.t
 t/reflect.t
+t/rel_undef.t
 t/related.t
 t/release-eol.t
 t/release-no-tabs.t
 t/reload_options.t
 t/resultset.t
+t/script/bookdb_create_ddl.pl
 t/script/bookdb_schema.pl
 t/script/bookdb_server.pl
 t/script/bookdb_test.pl
@@ -105,3 +118,4 @@ t/unique-composite.t
 t/unique.t
 t/xt/02pod.t
 t/xt/dump.t
+t/xt/eol.t
