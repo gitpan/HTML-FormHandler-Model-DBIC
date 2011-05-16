@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0.94'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'HTML-FormHandler-Model-DBIC',
   'EXE_FILES' => [
@@ -29,11 +29,11 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'DBIx::Class' => '0',
     'DBIx::Class::ResultSet::RecursiveUpdate' => '0.21',
-    'HTML::FormHandler' => '0.32004',
-    'Moose' => '0.90',
+    'HTML::FormHandler' => '0.34001',
+    'Moose' => '2.0007',
     'namespace::autoclean' => '0.09'
   },
-  'VERSION' => '0.14',
+  'VERSION' => '0.15',
   'test' => {
     'TESTS' => 't/*.t t/xt/*.t'
   }

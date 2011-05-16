@@ -156,14 +156,20 @@ sub lookup_options
    return unless $source;
 
    my $label_column = $field->label_column;
-   return unless $source->has_column($label_column);
+   return unless ($source->has_column($label_column) || $source->can($label_column) );
 
    my $active_col = $self->active_column || $field->active_column;
    $active_col = '' unless $source->has_column($active_col);
    my $sort_col = $field->sort_column;
-   $sort_col = defined $sort_col && $source->has_column($sort_col) ? $sort_col : $label_column;
-
    my ($primary_key) = $source->primary_columns;
+   
+   # if no sort_column and label_column is a source method, not a real column, must 
+   # use some other column for sort. There's probably some other column that should
+   # be specified, but this will prevent breakage
+   if ( !(defined $sort_col && $source->has_column($sort_col)) ) {
+       $sort_col = $source->has_column($label_column) ? $label_column : $primary_key;
+   }
+
 
    # If there's an active column, only select active OR items already selected
    my $criteria = {};
@@ -253,8 +259,8 @@ sub validate_unique
 
       my $count = $rs->search( { $accessor => $value, @id_clause } )->count;
       next if $count < 1;
-      my $field_error = $field->unique_message || 'Duplicate value for ' . $field->label;
-      $field->add_error( $field_error );
+      my $field_error = $field->unique_message || 'Duplicate value for [_1]';
+      $field->add_error( $field_error, $field->loc_label );
       $found_error++;
    }
 
@@ -288,7 +294,7 @@ sub validate_unique
       next if $count < 1;
 
       my $field_error = $self->unique_message_for_constraint($constraint);
-      $field->add_error( $field_error );
+      $field->add_error( $field_error, $constraint );
       $found_error++;
    }
 
@@ -299,7 +305,7 @@ sub unique_message_for_constraint {
    my $self       = shift;
    my $constraint = shift;
 
-   return $self->unique_messages->{$constraint} ||= "Duplicate value for $constraint unique constraint";
+   return $self->unique_messages->{$constraint} ||= "Duplicate value for [_1] unique constraint";
 }
 
 sub _id_clause {
@@ -408,7 +414,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
@@ -599,6 +605,26 @@ Returns a DBIx::Class::ResultSource object for this Result Class.
 
 This method returns a resultset from the "item_class" specified
 in the form (C<< $schema->resultset( $form->item_class ) >>)
+
+=head1 Attributes
+
+=over
+
+=item schema
+
+=item source_name
+
+=item unique_constraints
+
+=item unique_messages
+
+=item ru_flags
+
+L<DBIx::Class::ResultSet::RecursiveUpdate> is used to interface with L<DBIx::Class>.
+By default, the flag 'unknown_params_ok' is passed in. The 'ru_flags' attribute is
+a hashref, and also provides 'set_ru_flag'.
+
+=back
 
 =head1 AUTHOR
 
