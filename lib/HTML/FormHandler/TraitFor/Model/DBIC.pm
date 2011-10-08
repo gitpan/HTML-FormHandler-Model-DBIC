@@ -414,7 +414,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 

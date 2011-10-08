@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.64.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,27 +14,27 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-SHA1 2618e62f00fd1467beb0b09e33665b4d1664c5bf Changes
+SHA1 1a2983ceb1dd41714e1d10aed4954700138fc745 Changes
 SHA1 674ec091357ed31599f8081acb61b17054e1650e INSTALL
-SHA1 2f0045ac3d6d539f73a61360de049b2f7fe349d0 LICENSE
+SHA1 cc76852569f5b3f2f6e3769a2ef0ffca1fd6a0f5 LICENSE
 SHA1 fafb148c19a0eaf7c16960452ee1c63a34d1069a MANIFEST
-SHA1 f1fb2e61c82e956e0cdf49570bde52c2881950ac META.json
-SHA1 580bfff8f897ccdecc360e367913e024338a158e META.yml
-SHA1 25d0224e53e8c617e398e8c60a3a9acd8aa67f43 Makefile.PL
-SHA1 fbb5ad5d3a245c39e125f5e4f5ec58ea569e6f2c README
+SHA1 c84d2d438b88b0084ac11e8c6fcfdbf58f73ec95 META.json
+SHA1 827e9a2b3c95404518867736e88f43bef8dfe070 META.yml
+SHA1 2db20dc4279aa883626e27883e3102b14cb37de9 Makefile.PL
+SHA1 7a6b2f08dc31412ccee62af0c83f56fb2a0ba850 README
 SHA1 a8d73c860cf746b8a1a74ff351719f9c53a3f560 TODO
-SHA1 d0be7dc8b11615a19c865501ce5dd3efcacd0bd6 dist.ini
-SHA1 51885055defb68cc698d925b5a827ece72b5c7e7 lib/HTML/FormHandler/Generator/DBIC.pm
-SHA1 2b6cc82cf9d3f34fea8325982b70390f31a6b55b lib/HTML/FormHandler/Model/DBIC.pm
-SHA1 8679a2ae69be8d43fe38163f76aa193df60176cf lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
-SHA1 3ce5c435d50950ffb549a982f7212b03bd06f66a lib/HTML/FormHandler/TraitFor/DBICFields.pm
-SHA1 108aaf6bebdd9132e099f66b400c5c4d51f42d43 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
-SHA1 9b849c383cf4e6bb4d2e7cdb3791bfcc31a6e2e0 script/form_generator.pl
+SHA1 08c010eaa94564c29f67a261d1f32dfe00c653fc dist.ini
+SHA1 a5ebfbe5d795c2b04cdd8fd863be95f5c9de21e8 lib/HTML/FormHandler/Generator/DBIC.pm
+SHA1 4ca4d24567c6c518cf78671b8bc4137c2848ffc2 lib/HTML/FormHandler/Model/DBIC.pm
+SHA1 06832576cdcd9f31601c97688680523c452d5271 lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
+SHA1 4ae58cdd5a3de76bfaff6f4c11878d62419f9246 lib/HTML/FormHandler/TraitFor/DBICFields.pm
+SHA1 d51020505f702bdc7691ba19f5ed2593c1e72120 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
+SHA1 83cd14307c7d0f376df205ff7d48555589ae607e script/form_generator.pl
 SHA1 e141c74dbb016fc0b4e2ff548cb113e0e6cbeac9 t/01app.t
 SHA1 b03b8d035f37e3b2789fa33657b28fa909bd014c t/bad_item_id.t
 SHA1 c91bda580587e2c2ba8c4dabf9ec6b4f568fffea t/book.t
 SHA1 87724602fd8b108f56453a5b5be0bb607cdf2ad4 t/datetime.t
-SHA1 0c74b08ca7237682de50bc4920f10ef92c0ced6f t/db/book.db
+SHA1 b121ce22cbb2a4aeae50e4fd752f87182dbdbbca t/db/book.db
 SHA1 bca6f3e1ee6da992e291878a23f914e638cc553e t/db/bookdb.sql
 SHA1 be1905a385504c7bbf0e9a3b225ddeefb78eace9 t/db_fif.t
 SHA1 2e318f0ec4d69ce9622b31071c73189cbd0d1562 t/db_has_many.t
@@ -110,7 +110,7 @@ SHA1 315f997c40b5281d74e3a61d8cea8466f7fc1d39 t/model_dbic.t
 SHA1 a3c1c813da64b600bd39b7fa7fc529c650d6e609 t/mult_pk.t
 SHA1 d9758d2303716483e99e55ea7b5f1c460aa4a94e t/process.t
 SHA1 8544efe061fc15108466938bd37c8b1727b5be8f t/reflect.t
-SHA1 44cbbc383d79d4b25bd29574529dec524c0d3015 t/related.t
+SHA1 2a16e1ca8d089d093357b97db8bc9ddc390d0b80 t/related.t
 SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
 SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
 SHA1 a1731d1ac9e3a5218db578bc8557a0b0c068ac47 t/reload_options.t
@@ -125,7 +125,7 @@ SHA1 6c8c9e4255f3a7e58a2508bb779ec013ac48706f t/xt/dump.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (Darwin)
 
-iF4EAREIAAYFAk3RakYACgkQlX0ZOkgCucjhwQD+IpgA46owFLS8teN4dVKYuLrj
-yEicf7UEUVBXtUpg0PAA/j3BYvxXf1SX9PH30X85jFAsxNjmYb6gGYfnmkwL1KT2
-=6YAq
+iF4EAREIAAYFAk6Qs4sACgkQlX0ZOkgCucj/PgD/b7VXPo660b/kL/ZzUQz3PWGz
+4U4aeTMhgdDCyk+VM+AA/3bCcPPVzXL+ZxuN70AaV1Jx+VB4dOpwLFaJtFL6PmIV
+=H51L
 -----END PGP SIGNATURE-----

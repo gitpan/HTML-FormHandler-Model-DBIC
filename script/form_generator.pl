@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-package form_generator.pl;
+package form_generator;
 # ABSTRACT: form generator
 use strict;
 use warnings;
@@ -21,7 +21,7 @@ form_generator - form generator
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 AUTHOR
 

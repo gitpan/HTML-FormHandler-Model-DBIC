@@ -111,7 +111,7 @@ my $form_template = <<'END';
     [% FOR field = config.fields -%]
 [% field %]
     [% END -%]
-has_field 'submit' => ( widget => 'submit' )
+has_field 'submit' => ( widget => 'Submit' )
 }
 [% FOR field_class = self.list_field_classes %]
 [% SET cf = self.get_field_class_data( field_class ) %]
@@ -336,7 +336,7 @@ HTML::FormHandler::Generator::DBIC - form generator for DBIC
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
