@@ -5,7 +5,7 @@ use Moose;
 extends 'HTML::FormHandler';
 with 'HTML::FormHandler::TraitFor::Model::DBIC';
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 
 use namespace::autoclean;
@@ -20,7 +20,7 @@ HTML::FormHandler::Model::DBIC - base class that holds DBIC model role
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 SUMMARY
 
@@ -33,7 +33,7 @@ FormHandler Contributors - see HTML::FormHandler
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Gerda Shank.
+This software is copyright (c) 2012 by Gerda Shank.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

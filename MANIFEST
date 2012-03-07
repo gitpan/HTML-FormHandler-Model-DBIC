@@ -15,7 +15,9 @@ lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
 lib/HTML/FormHandler/TraitFor/DBICFields.pm
 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
 script/form_generator.pl
+t/00-compile.t
 t/01app.t
+t/author.t
 t/bad_item_id.t
 t/book.t
 t/datetime.t
@@ -37,6 +39,7 @@ t/lib/BookDB/Controller/Borrower.pm
 t/lib/BookDB/Controller/Root.pm
 t/lib/BookDB/Controller/User.pm
 t/lib/BookDB/Form/Author.pm
+t/lib/BookDB/Form/AuthorOld.pm
 t/lib/BookDB/Form/Book.pm
 t/lib/BookDB/Form/BookHTML.pm
 t/lib/BookDB/Form/BookM2M.pm
@@ -46,16 +49,17 @@ t/lib/BookDB/Form/BookWithOwnerAlt.pm
 t/lib/BookDB/Form/Borrower.pm
 t/lib/BookDB/Form/BorrowerX.pm
 t/lib/BookDB/Form/Field/AltText.pm
+t/lib/BookDB/Form/Field/Book.pm
 t/lib/BookDB/Form/Profile.pm
 t/lib/BookDB/Form/Role/BookOwner.pm
 t/lib/BookDB/Form/User.pm
-t/lib/BookDB/Form/User2.pm
-t/lib/BookDB/Form/User3.pm
 t/lib/BookDB/Form/Widget/Wrapper/Para.pm
 t/lib/BookDB/Model/DB.pm
 t/lib/BookDB/Schema.pm
 t/lib/BookDB/Schema/Result/Address.pm
 t/lib/BookDB/Schema/Result/Author.pm
+t/lib/BookDB/Schema/Result/AuthorBooks.pm
+t/lib/BookDB/Schema/Result/AuthorOld.pm
 t/lib/BookDB/Schema/Result/Book.pm
 t/lib/BookDB/Schema/Result/BooksGenres.pm
 t/lib/BookDB/Schema/Result/Borrower.pm

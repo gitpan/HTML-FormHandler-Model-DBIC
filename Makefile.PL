@@ -29,11 +29,11 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "DBIx::Class" => 0,
     "DBIx::Class::ResultSet::RecursiveUpdate" => "0.21",
-    "HTML::FormHandler" => "0.35005",
+    "HTML::FormHandler" => "0.34001",
     "Moose" => "2.0007",
     "namespace::autoclean" => "0.09"
   },
-  "VERSION" => "0.16",
+  "VERSION" => "0.17",
   "test" => {
     "TESTS" => "t/*.t t/xt/*.t"
   }

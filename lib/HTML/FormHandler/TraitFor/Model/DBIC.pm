@@ -143,15 +143,18 @@ sub lookup_options
    # if this field doesn't refer to a foreign key, return
    my $f_class;
    my $source;
-   if ($self_source->has_relationship($accessor) )
-   {
-      $f_class = $self_source->related_class($accessor);
-      $source = $self->schema->source($f_class);
+   # belongs_to single select
+   if ($self_source->has_relationship($accessor) ) {
+       $f_class = $self_source->related_class($accessor);
+       $source = $self->schema->source($f_class);
    }
-   elsif ($self->resultset->new_result({})->can("add_to_$accessor") )
-   {
-      # Multiple field with many_to_many relationship
-      $source = $self_source->resultset->new_result({})->$accessor->result_source;
+   else {
+       # check for many_to_many multiple select
+       my $resultset = $self_source->resultset;
+       my $new_result = $resultset->new_result({});
+       if( $new_result && $new_result->can("add_to_$accessor") ) {
+          $source = $new_result->$accessor->result_source;
+       }
    }
    return unless $source;
 
@@ -162,8 +165,8 @@ sub lookup_options
    $active_col = '' unless $source->has_column($active_col);
    my $sort_col = $field->sort_column;
    my ($primary_key) = $source->primary_columns;
-   
-   # if no sort_column and label_column is a source method, not a real column, must 
+
+   # if no sort_column and label_column is a source method, not a real column, must
    # use some other column for sort. There's probably some other column that should
    # be specified, but this will prevent breakage
    if ( !(defined $sort_col && $source->has_column($sort_col)) ) {
@@ -414,7 +417,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 SYNOPSIS
 
@@ -632,7 +635,7 @@ FormHandler Contributors - see HTML::FormHandler
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Gerda Shank.
+This software is copyright (c) 2012 by Gerda Shank.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
