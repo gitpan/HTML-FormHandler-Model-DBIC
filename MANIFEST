@@ -15,7 +15,6 @@ lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
 lib/HTML/FormHandler/TraitFor/DBICFields.pm
 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
 script/form_generator.pl
-t/00-compile.t
 t/01app.t
 t/author.t
 t/bad_item_id.t

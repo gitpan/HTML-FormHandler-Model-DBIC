@@ -368,7 +368,7 @@ HTML::FormHandler::Generator::DBIC - form generator for DBIC
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 SYNOPSIS
 
