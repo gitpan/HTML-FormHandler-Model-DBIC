@@ -8,7 +8,7 @@ use HTML::FormHandler::Model::DBIC::TypeMap;
 
 has 'fields_from_model' => ( is => 'ro', default => 1 );
 
-has 'include' => ( is => 'ro',
+has 'includes' => ( is => 'ro',
     traits => ['Array'],
     isa => 'ArrayRef[Str]',
     default => sub {[]},
@@ -17,7 +17,7 @@ has 'include' => ( is => 'ro',
        has_includes => 'count',
     }
 );
-has 'exclude' => ( is => 'ro',
+has 'excludes' => ( is => 'ro',
     traits => ['Array'],
     isa => 'ArrayRef[Str]',
     default => sub {[]},
@@ -47,7 +47,7 @@ sub build_type_map {
 
 sub model_fields {
     my $self = shift;
-    my $fields = $self->get_fields( $self->source_name, 0, @{$self->exclude} );
+    my $fields = $self->get_fields( $self->source_name, 0, @{$self->excludes} );
     return $fields;
 }
 
@@ -102,7 +102,7 @@ HTML::FormHandler::TraitFor::DBICFields - role to get fields from DBIx::Class re
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 

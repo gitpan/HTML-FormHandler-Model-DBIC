@@ -21,7 +21,7 @@ form_generator - form generator
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 AUTHOR
 
