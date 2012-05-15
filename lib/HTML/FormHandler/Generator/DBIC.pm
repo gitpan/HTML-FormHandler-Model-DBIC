@@ -116,7 +116,6 @@ my $form_template = <<'END';
     package [% config.class %]Form;
     use HTML::FormHandler::Moose;
     extends 'HTML::FormHandler::Model::DBIC';
-    with 'HTML::FormHandler::Render::Simple';
     use namespace::autoclean;
 [% FOR package = self.used_packages %]
     use [% package %];
@@ -368,7 +367,7 @@ HTML::FormHandler::Generator::DBIC - form generator for DBIC
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
