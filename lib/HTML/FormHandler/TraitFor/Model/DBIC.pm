@@ -169,7 +169,7 @@ sub lookup_options
    # if no sort_column and label_column is a source method, not a real column, must
    # use some other column for sort. There's probably some other column that should
    # be specified, but this will prevent breakage
-   if ( !(defined $sort_col && $source->has_column($sort_col)) ) {
+   if ( ! defined $sort_col ) {
        $sort_col = $source->has_column($label_column) ? $label_column : $primary_key;
    }
 
@@ -255,6 +255,7 @@ sub validate_unique
    for my $field ( @$fields )
    {
       next unless $field->unique;
+      next if ( $field->is_inactive || !$field->has_result );
       next if $field->has_errors;
       my $value = $field->value;
       next unless defined $value;
@@ -417,7 +418,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 SYNOPSIS
 
@@ -436,11 +437,11 @@ or apply as a role to FormHandler class:
 
 =head1 DESCRIPTION
 
-This is a separate L<DBIx::Class> model role for L<HTML::FormHandler>. It will save
-form fields automatically to the database. The distribution
-contains an example application (execute with t/script/bookdb_server.pl) and a form
-generator (L<HTML::FormHandler::Generator::DBIC>).
+This is a separate L<DBIx::Class> model role for L<HTML::FormHandler>.
 It will handle normal DBIC column accessors and a number of DBIC relationships.
+It will save form fields automatically to the database. The distribution contains a form
+generator (L<HTML::FormHandler::Generator::DBIC>). An example application can
+be found on github at http://github.com/gshank/formhandler-example.
 
 L<HTML::FormHandler::TraitFor::DBICFields> can be used to auto-generate forms
 from a DBIC result.

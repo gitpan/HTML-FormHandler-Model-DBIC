@@ -4,7 +4,7 @@
       "FormHandler Contributors - see HTML::FormHandler"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300014, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300020, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -23,7 +23,7 @@
          "requires" : {
             "DBIx::Class" : "0",
             "DBIx::Class::ResultSet::RecursiveUpdate" : "0.25",
-            "HTML::FormHandler" : "0.40009",
+            "HTML::FormHandler" : "0.40014",
             "Moose" : "2.0007",
             "namespace::autoclean" : "0.09"
          }
@@ -49,6 +49,6 @@
          "web" : "http://github.com/gshank/html-formhandler-model-dbic"
       }
    },
-   "version" : "0.21"
+   "version" : "0.22"
 }
 
