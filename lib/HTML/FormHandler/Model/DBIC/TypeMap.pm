@@ -66,7 +66,7 @@ HTML::FormHandler::Model::DBIC::TypeMap - type mape for DBICFields
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
