@@ -17,7 +17,7 @@ meta-spec:
   version: 1.4
 name: HTML-FormHandler-Model-DBIC
 requires:
-  DBIx::Class: 0
+  DBIx::Class: 0.08250
   DBIx::Class::ResultSet::RecursiveUpdate: 0.25
   HTML::FormHandler: 0.40016
   Moose: 2.0007
@@ -25,4 +25,4 @@ requires:
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-FormHandler-Model-DBIC
   repository: git://github.com/gshank/html-formhandler-model-dbic.git
-version: 0.23
+version: 0.24

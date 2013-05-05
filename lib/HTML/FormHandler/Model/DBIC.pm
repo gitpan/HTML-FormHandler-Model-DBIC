@@ -5,7 +5,7 @@ use Moose;
 extends 'HTML::FormHandler';
 with 'HTML::FormHandler::TraitFor::Model::DBIC';
 
-our $VERSION = '0.23';
+our $VERSION = '0.24';
 
 
 use namespace::autoclean;
@@ -20,7 +20,7 @@ HTML::FormHandler::Model::DBIC - base class that holds DBIC model role
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SUMMARY
 
