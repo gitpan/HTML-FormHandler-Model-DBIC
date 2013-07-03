@@ -162,7 +162,7 @@ sub lookup_options {
     my $label_column = $field->label_column;
     return
         unless ( $source->has_column($label_column) ||
-        $source->can($label_column) );
+        $source->result_class->can($label_column) );
 
     my $active_col = $self->active_column || $field->active_column;
     $active_col = '' unless $source->has_column($active_col);
@@ -422,7 +422,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 
