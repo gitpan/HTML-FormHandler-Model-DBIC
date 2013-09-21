@@ -14,29 +14,31 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-SHA1 f88682bff82e3cdd4a17f375dfcfef1589c3b844 Changes
+SHA1 f770f92b7507c986fe901f2da95081ea92a42796 Changes
 SHA1 674ec091357ed31599f8081acb61b17054e1650e INSTALL
-SHA1 db5549ef0b451d5723593f2156141e6708484dfd LICENSE
-SHA1 3a15c5b2a86847d8371ee29d337771d903772ad9 MANIFEST
-SHA1 1cc97c943f648fdf844ca58b2670c0a0ba8eb516 META.json
-SHA1 ffd9585a20c592fb7866ee1a7426b69d1466af73 META.yml
-SHA1 aa943c5d703379c3a74178e5f862042f7408af8b Makefile.PL
-SHA1 d1fafcaef0bbe01e780e9ab0bce9bd745b219294 README
+SHA1 b666e0455e9fd5ccdcadd7cc9750644700fc8c22 LICENSE
+SHA1 ce9b8c00e5f9b8abee54abdd1a3f07f2b8277bba MANIFEST
+SHA1 5a29e7da8f0c8d1b592c279d7e746c1d9639b932 META.json
+SHA1 0de4b84720d7d7eedd55950cbb70a1fb893fa97e META.yml
+SHA1 3648a7cd51061d7e7e8f6806eab114045e8ac0ee Makefile.PL
+SHA1 8309e124e1f619a81b6006ee6501407bbeb5bcee README
 SHA1 a8d73c860cf746b8a1a74ff351719f9c53a3f560 TODO
-SHA1 98ad7d81dbbcb659c970e9bfb37f2a31efc94e1b dist.ini
-SHA1 757891cd80220c646405226f11fedf498c94abde lib/HTML/FormHandler/Generator/DBIC.pm
-SHA1 67a7ae66f37ba5ca09ebbd61879093d9429efdd9 lib/HTML/FormHandler/Model/DBIC.pm
-SHA1 1a36afb3a141ef5f9cf4519300524f82d0dea248 lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
-SHA1 e177e306ef84bf9d529fd7fb3a4b53927ce20957 lib/HTML/FormHandler/TraitFor/DBICFields.pm
-SHA1 1d15110eb4d0980438c0b7a9b8b46234824c94b3 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
-SHA1 488df3ffc08e9b0239397d50e8c6e1dfff94e6aa script/form_generator.pl
+SHA1 2425fc5b492558b2a2acdfe25c4fdb3f02ed3f7f dist.ini
+SHA1 94e4219f8b4f4ccd813816f08e7106ce8b70cc5d lib/HTML/FormHandler/Generator/DBIC.pm
+SHA1 0061e8eccda3273e83f440996ece534617e597d0 lib/HTML/FormHandler/Model/DBIC.pm
+SHA1 8f1d85ede30297ca36f0a7209d328a5e353b8e86 lib/HTML/FormHandler/Model/DBIC/TypeMap.pm
+SHA1 5b26e36b4e2b13e10fbb496d631b5e723d039c8c lib/HTML/FormHandler/TraitFor/DBICFields.pm
+SHA1 d0c70c25053973c94fe24c0f884834ef3034c0b2 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
+SHA1 0a294b987668ed9425875b93a3bf0b07ecc55afa script/form_generator.pl
 SHA1 e141c74dbb016fc0b4e2ff548cb113e0e6cbeac9 t/01app.t
+SHA1 c910b1623c4b03c14d280a01d42979e28ec8f102 t/active_column.t
 SHA1 b19a7d514320858a9f58455635c346aa4da663d8 t/author.t
 SHA1 b03b8d035f37e3b2789fa33657b28fa909bd014c t/bad_item_id.t
-SHA1 2cd3b122a2c67f6b1e3949ba280ea981ae2a9b1a t/book.t
+SHA1 e05624f03890ccc13b0433864c21af1db0f763c2 t/book.t
+SHA1 cd2214898eb4484fd5d515b85a34c060312a9e2a t/book2pk.t
 SHA1 ffdd1e69a43a80a797d7765146e86dd99f61ae63 t/datetime.t
-SHA1 b2dfd77385559ad1472c1baa1f633029363caafb t/db/book.db
-SHA1 5cc844898f08f8e4f30a8ca897c41eae01902c0b t/db/bookdb.sql
+SHA1 4ab0b326d2fc6d1d55f3d9bdf33bfb5a53ea1659 t/db/book.db
+SHA1 dc44fb3bb1b947d18d4d3b2b859ac4cd5ae24439 t/db/bookdb.sql
 SHA1 553c4d810e9fc902273195f5661386def69a72f4 t/db_fif.t
 SHA1 2e318f0ec4d69ce9622b31071c73189cbd0d1562 t/db_has_many.t
 SHA1 653c2c4049390afdad5c773a1399c689adc4b7f4 t/db_has_one.t
@@ -50,6 +52,7 @@ SHA1 14989b01195d51bfe165bda524799c5ad84919de t/lib/BookDB.pm
 SHA1 71ed372b5f2cb0040c98b333e242878e3bc917c4 t/lib/BookDB/Form/Author.pm
 SHA1 0d2b18d1c28bbdd9611033ec44648333539e1c1d t/lib/BookDB/Form/AuthorOld.pm
 SHA1 57ac298e6e3abc17f2bc5e48220c7c1c462a7bb2 t/lib/BookDB/Form/Book.pm
+SHA1 d08154338f45a07137f85d6ae0c7cb54a1ef95ca t/lib/BookDB/Form/Book2PK.pm
 SHA1 b5ce1b76ee76505069efa62d4f201fae7b2d457c t/lib/BookDB/Form/BookHTML.pm
 SHA1 d426249c86ae939b3032846bc82d9ec903c57cc5 t/lib/BookDB/Form/BookM2M.pm
 SHA1 cbe1dd7bcedd279e943e81a4f1bd89e8f6890c7e t/lib/BookDB/Form/BookView.pm
@@ -69,6 +72,7 @@ SHA1 742e87180a2599893a806f2d03cc57f5f705088e t/lib/BookDB/Schema/Result/Author.
 SHA1 66660fb22bcb833e82609ac33ba4183261be2f66 t/lib/BookDB/Schema/Result/AuthorBooks.pm
 SHA1 47bc39eb211a3e8be2ec2c7b5281dddc001ca13f t/lib/BookDB/Schema/Result/AuthorOld.pm
 SHA1 f7e3a768098f9ee0b197e0b2276b90cabfef6c83 t/lib/BookDB/Schema/Result/Book.pm
+SHA1 c19a7d88766c01ae9c5e1c16dcf5f43e33a4f56c t/lib/BookDB/Schema/Result/Book2PK.pm
 SHA1 0b13f30efa9317c7def84e10a007ed8a2e900d0e t/lib/BookDB/Schema/Result/BooksGenres.pm
 SHA1 8fdeb42fdfc15f2692fdc141ca4853ea3997b276 t/lib/BookDB/Schema/Result/Borrower.pm
 SHA1 025fa1a06df3677d577311cdf88190fca9c2ec9a t/lib/BookDB/Schema/Result/Country.pm
@@ -95,7 +99,7 @@ SHA1 6c8c9e4255f3a7e58a2508bb779ec013ac48706f t/xt/dump.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.13 (Darwin)
 
-iF4EAREIAAYFAlHsGVAACgkQlX0ZOkgCuch6+QD/U2DgzXRGVVHiISQdZ0ra7vIO
-RwOJ3WZZDSz5hXNnkx4A/iJYb17PJn9Ri1tafT0roFubsL/oUQnu0qRV2amIN+r+
-=4p/W
+iF4EAREIAAYFAlI+CWMACgkQlX0ZOkgCucjvdQD+KRioMi4UX9TVu6KtQ2oNql+k
+M/PBkNti00oq5vNXl8oA/iaK1sDSCFNzRiDq/y8tgLq2gGM5fBh539QuNuo6tRdy
+=g1ek
 -----END PGP SIGNATURE-----

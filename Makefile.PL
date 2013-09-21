@@ -15,6 +15,7 @@ my %WriteMakefileArgs = (
     "DateTime::Format::MySQL" => 0,
     "DateTime::Format::SQLite" => 0,
     "DateTime::Format::W3CDTF" => 0,
+    "Test::Exception" => 0,
     "Test::More" => "0.94"
   },
   "CONFIGURE_REQUIRES" => {
@@ -33,7 +34,7 @@ my %WriteMakefileArgs = (
     "Moose" => "2.0007",
     "namespace::autoclean" => "0.09"
   },
-  "VERSION" => "0.26",
+  "VERSION" => "0.27",
   "test" => {
     "TESTS" => "t/*.t t/xt/*.t"
   }

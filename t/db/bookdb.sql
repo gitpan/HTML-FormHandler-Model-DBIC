@@ -178,12 +178,12 @@ CREATE TABLE genre (
     name varchar(100),
     is_active INTEGER
 );
-INSERT INTO "genre" VALUES(1, 'Sci-Fi', NULL);
-INSERT INTO "genre" VALUES(2, 'Computers', NULL);
+INSERT INTO "genre" VALUES(1, 'Sci-Fi', 1);
+INSERT INTO "genre" VALUES(2, 'Computers', 1);
 INSERT INTO "genre" VALUES(3, 'Mystery', NULL);
 INSERT INTO "genre" VALUES(4, 'Historical', NULL);
 INSERT INTO "genre" VALUES(5, 'Fantasy', NULL);
-INSERT INTO "genre" VALUES(6, 'Technical', NULL);
+INSERT INTO "genre" VALUES(6, 'Technical', 1);
 CREATE TABLE author_old (
    first_name VARCHAR(100),
    last_name VARCHAR(100),
@@ -277,5 +277,27 @@ CREATE TABLE roles (
 );
 
 CREATE UNIQUE INDEX unique_role ON roles (display_value);
+
+CREATE TABLE book2pk (
+    libraryid INTEGER NOT NULL DEFAULT 1,
+    id INTEGER NOT NULL,
+    isbn varchar(100),
+    title varchar(100),
+    publisher varchar(100),
+    pages int,
+    year int,
+    PRIMARY KEY (libraryid, id)
+);
+
+CREATE UNIQUE INDEX isbn ON book2pk (libraryid, isbn);
+
+INSERT INTO "book2pk" VALUES(1,1, '0-7475-5100-6', 'Harry Potter and the Order of the Phoenix', 'Boomsbury', 766, 2001);
+INSERT INTO "book2pk" VALUES(1,2, '9 788256006199', 'Idioten', 'Interbook', 303, 1901);
+INSERT INTO "book2pk" VALUES(1,3, '434012386', 'The Confusion', 'Heinemann', 345, 2002);
+INSERT INTO "book2pk" VALUES(1,4, '782128254', 'The Complete Java 2 Certification Study Guide: Programmer''s and Developers Exams (With CD-ROM)', 'Sybex Inc', NULL, 1999);
+INSERT INTO "book2pk" VALUES(1,5, '123-1234-0-123', 'Winnie The Pooh', 'Houghton Mifflin', 345, 1935);
+INSERT INTO "book2pk" VALUES(1,6, '0-596-10092-2', 'Perl Testing: A Developer''s Notebook', 'O''Reilly', 182, 2005);
+INSERT INTO "book2pk" VALUES(1,7, '0-7475-8134-6', 'Harry Potter and the Last Gasp', 'Boomsbury', 801, 2005);
+
 
 COMMIT;

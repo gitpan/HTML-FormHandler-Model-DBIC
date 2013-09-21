@@ -33,6 +33,7 @@
             "DateTime::Format::MySQL" : "0",
             "DateTime::Format::SQLite" : "0",
             "DateTime::Format::W3CDTF" : "0",
+            "Test::Exception" : "0",
             "Test::More" : "0.94"
          }
       }
@@ -49,6 +50,6 @@
          "web" : "http://github.com/gshank/html-formhandler-model-dbic"
       }
    },
-   "version" : "0.26"
+   "version" : "0.27"
 }
 

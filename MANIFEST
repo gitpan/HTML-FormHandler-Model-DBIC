@@ -16,9 +16,11 @@ lib/HTML/FormHandler/TraitFor/DBICFields.pm
 lib/HTML/FormHandler/TraitFor/Model/DBIC.pm
 script/form_generator.pl
 t/01app.t
+t/active_column.t
 t/author.t
 t/bad_item_id.t
 t/book.t
+t/book2pk.t
 t/datetime.t
 t/db/book.db
 t/db/bookdb.sql
@@ -35,6 +37,7 @@ t/lib/BookDB.pm
 t/lib/BookDB/Form/Author.pm
 t/lib/BookDB/Form/AuthorOld.pm
 t/lib/BookDB/Form/Book.pm
+t/lib/BookDB/Form/Book2PK.pm
 t/lib/BookDB/Form/BookHTML.pm
 t/lib/BookDB/Form/BookM2M.pm
 t/lib/BookDB/Form/BookView.pm
@@ -54,6 +57,7 @@ t/lib/BookDB/Schema/Result/Author.pm
 t/lib/BookDB/Schema/Result/AuthorBooks.pm
 t/lib/BookDB/Schema/Result/AuthorOld.pm
 t/lib/BookDB/Schema/Result/Book.pm
+t/lib/BookDB/Schema/Result/Book2PK.pm
 t/lib/BookDB/Schema/Result/BooksGenres.pm
 t/lib/BookDB/Schema/Result/Borrower.pm
 t/lib/BookDB/Schema/Result/Country.pm
