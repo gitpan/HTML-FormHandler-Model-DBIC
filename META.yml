@@ -26,4 +26,4 @@ requires:
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-FormHandler-Model-DBIC
   repository: git://github.com/gshank/html-formhandler-model-dbic.git
-version: 0.27
+version: 0.28
