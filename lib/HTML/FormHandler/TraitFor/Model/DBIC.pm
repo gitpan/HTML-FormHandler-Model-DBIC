@@ -417,7 +417,10 @@ use namespace::autoclean;
 1;
 
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -425,7 +428,7 @@ HTML::FormHandler::TraitFor::Model::DBIC - model role that interfaces with DBIx:
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -584,10 +587,8 @@ The currently selected values in a Multiple list are grouped at the top
 
 =head2 init_value
 
-This method sets a field's value (for $field->value).
-
-This method is not called if a method "init_value_$field_name" is found
-in the form class - that method is called instead.
+This method sets a field's initial value. it is set when values are
+initially loaded from an item, init_object or field defaults.
 
 =head2 validate_unique
 
@@ -649,4 +650,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
